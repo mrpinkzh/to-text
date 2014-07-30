@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using ToText.Api.Infrastructure;
 
 namespace ToText.Api
@@ -23,6 +22,14 @@ namespace ToText.Api
             var shinobi = new Shinobi {Age = randomAge};
             Assert.That(shinobi.ToText(s => s.Age),
                 Is.EqualTo("Shinobi: Age = '"+randomAge+"'"));
+        }
+
+        [Test]
+        public void OnNinja_WithHideMethod_ShouldReturnNinja()
+        {
+            var ninja = new Ninja();
+            Assert.That(ninja.ToText(n => n.Hide()),
+                Is.EqualTo("Ninja"));
         }
     }
 }

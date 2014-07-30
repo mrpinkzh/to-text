@@ -8,10 +8,15 @@ namespace ToText.Api
     {
         public static string ToText<T, TResult>(this T item, params Expression<Func<T, TResult>>[] members)
         {
+            string type = typeof (T).Name;
             Expression<Func<T, TResult>> expression = members.First();
-            string memberName = expression.ExtractMemberName();
-            TResult value = expression.Compile()(item);
-            return string.Format("{0}: {1} = '{2}'", typeof (T).Name, memberName, value);
+            if (expression.IsMember())
+            {
+                string memberName = expression.ExtractMemberName();
+                TResult value = expression.Compile()(item);
+                return string.Format("{0}: {1} = '{2}'", type, memberName, value);
+            }
+            return type;
         }
     }
 }
