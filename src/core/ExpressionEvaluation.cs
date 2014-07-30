@@ -31,8 +31,12 @@ namespace ToText
 
         public static string ExtractMemberName<T>(this Expression<T> expression)
         {
-            var memberExpression = expression.ExtractMemberExpression();
-            return memberExpression.Member.Name;
+            if (expression.IsMember())
+            {
+                MemberExpression memberExpression = expression.ExtractMemberExpression();
+                return memberExpression.Member.Name;
+            }
+            return string.Empty;
         }
     }
 }

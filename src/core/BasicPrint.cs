@@ -10,5 +10,12 @@ namespace ToText
         {
             return string.Join(Environment.NewLine, items.Select(printMethod));
         }
+
+        public static string Spaces(this int amount)
+        {
+            if (amount == 1)
+                return " ";
+            return string.Format(" {0}",(amount - 1).Spaces());
+        }
     }
 }
