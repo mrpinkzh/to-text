@@ -7,8 +7,8 @@
     <ProjectGuid>{4319A96A-FC4D-48B3-A961-785250601B19}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ToText.Core</RootNamespace>
-    <AssemblyName>ToText.Core</AssemblyName>
+    <RootNamespace>ToText</RootNamespace>
+    <AssemblyName>ToText</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
