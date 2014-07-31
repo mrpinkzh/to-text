@@ -5,21 +5,19 @@ using NUnit.Framework;
 namespace ToText
 {
     [TestFixture]
-    public class ExpressionEvaluationTests_ExtractMemberName
+    public class ExpressionEvaluationTests_ExtractMemberName : ExpressionEvaluationTests_Base
     {
         [Test]
         public void WithStringLength_ShouldReturnLength()
-        {
-            Expression<Func<string, int>> expression = s => s.Length;
-            string memberName = expression.ExtractMemberName();
+        {            
+            string memberName = stringLengthExpression.ExtractMemberName();
             Assert.That(memberName, Is.EqualTo("Length"));
         }
 
         [Test]
         public void WithStringLengthObject_ShouldReturnLength()
         {
-            Expression<Func<string, object>> expression = s => s.Length;
-            string memberName = expression.ExtractMemberName();
+            string memberName = stringLengthObjectExpression.ExtractMemberName();
             Assert.That(memberName, Is.EqualTo("Length"));
         }
 

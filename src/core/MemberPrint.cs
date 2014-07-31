@@ -1,33 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 
 namespace ToText
 {
     public static class MemberPrint
     {
-        public static IEnumerable<string> PrintMembers<T>(
-            this IEnumerable<Expression<Func<T, dynamic>>> expressions,
-            T item,
-            int minMemberNameLength = -1)
-        {
-            return expressions.Select(exp => exp.PrintMember(item, minMemberNameLength)).Where(m => m != null);
-        }
-
         public static string PrintMember<T>(this Expression<Func<T, dynamic>> expression, T item, int minMemberNameLength = -1)
         {
             if (expression.IsMember())
             {
                 string memberName = expression.ExtractMemberExpression().PrintMemberName(minMemberNameLength);
-                dynamic value = expression.Compile()(item);
+                dynamic value = item.EvaluateValue(expression);
                 return string.Format("{0} = '{1}'", memberName, value);
             }
-            return null;
+            return string.Empty;
+        }
+
+        private static dynamic EvaluateValue<T>(this T item, Expression<Func<T, dynamic>> expression)
+        {
+            if (!typeof(T).IsValueType && item != null)
+                return expression.Compile()(item);
+            return string.Empty;
         }
 
         public static string PrintMemberName(this MemberExpression member, int minResultStringLength = -1)
         {
+            if (member == null)
+                return string.Empty;
             string memberName = member.Member.Name;
             int memberNameLength = memberName.Length;
             int spacesToFill = minResultStringLength - memberNameLength;

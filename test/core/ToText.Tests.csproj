@@ -40,9 +40,15 @@
   <ItemGroup>
     <Compile Include="BasicPrintTests_EnBlock.cs" />
     <Compile Include="BasicPrintTests_Spaces.cs" />
+    <Compile Include="ExpressionEvaluationTests_Base.cs" />
     <Compile Include="ExpressionEvaluationTests_ExtractMemberExpression.cs" />
     <Compile Include="ExpressionEvaluationTests_ExtractMemberName.cs" />
+    <Compile Include="ExpressionEvaluationTests_IsMember.cs" />
     <Compile Include="Infrastructure\CreateRandom.cs" />
+    <Compile Include="Infrastructure\Ninja.cs" />
+    <Compile Include="Infrastructure\Shinobi.cs" />
+    <Compile Include="MemberPrintTests_PrintMember.cs" />
+    <Compile Include="MemberPrintTests_PrintMemberName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace ToText.Api
+﻿namespace ToText.Infrastructure
 {
     public class Shinobi
     {
