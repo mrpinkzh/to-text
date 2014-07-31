@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ED3578D1-0779-49B0-9C5E-8E9ED10C8528}</ProjectGuid>
+    <ProjectGuid>{9BFA6445-2DAC-4062-9C5F-09EF90022086}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ToText.Api</RootNamespace>
-    <AssemblyName>ToText.Api.Tests</AssemblyName>
+    <RootNamespace>ToText</RootNamespace>
+    <AssemblyName>ToText.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -38,11 +38,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ninja.cs" />
-    <Compile Include="PrintMultiplePropertiesFeature.cs" />
-    <Compile Include="PrintSinglePropertyFeature.cs" />
+    <Compile Include="BasePrintTests.cs" />
+    <Compile Include="Infrastructure\CreateRandom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shinobi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -51,10 +49,6 @@
     <ProjectReference Include="..\..\src\core\ToText.csproj">
       <Project>{4319a96a-fc4d-48b3-a961-785250601b19}</Project>
       <Name>ToText</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\core\ToText.Tests.csproj">
-      <Project>{9bfa6445-2dac-4062-9c5f-09ef90022086}</Project>
-      <Name>ToText.Tests</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

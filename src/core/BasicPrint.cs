@@ -8,6 +8,8 @@ namespace ToText
     {
         public static string EnBlock<T>(this IEnumerable<T> items, Func<T, string> printMethod)
         {
+            if (items == null)
+                return "null";
             return string.Join(Environment.NewLine, items.Select(printMethod));
         }
 
@@ -17,5 +19,7 @@ namespace ToText
                 return " ";
             return string.Format(" {0}",(amount - 1).Spaces());
         }
+
+
     }
 }
