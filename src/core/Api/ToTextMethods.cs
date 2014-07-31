@@ -9,9 +9,13 @@ namespace ToText.Api
         {
             string type = typeof (T).Name;
             int typeNameLength = type.Length;
-            int minMemberNameSize = members.MaxMemberLength();
-            if (members.HasMembers())
-                return string.Format("{0}: {1}", type, members.EnBlock(m => m.PrintMember(item, minMemberNameSize), typeNameLength + 2));
+            if (members.Length > 0)
+            {
+                int minMemberNameSize = members.MaxMemberLength();
+                if (members.HasMembers())
+                    return string.Format("{0}: {1}", type,
+                        members.EnBlock(m => m.PrintMember(item, minMemberNameSize), typeNameLength + 2));
+            }
             return type;
         }
     }
