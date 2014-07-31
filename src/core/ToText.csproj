@@ -37,7 +37,7 @@
   <ItemGroup>
     <Compile Include="Api\ToTextMethods.cs" />
     <Compile Include="BasicPrint.cs" />
-    <Compile Include="ExpressionEvaluation.cs" />
+    <Compile Include="MemberExpressionEvaluation.cs" />
     <Compile Include="IndentationEvaluation.cs" />
     <Compile Include="MemberPrint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

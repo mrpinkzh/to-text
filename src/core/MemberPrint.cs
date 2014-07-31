@@ -9,7 +9,7 @@ namespace ToText
         {
             if (expression.IsMember())
             {
-                string memberName = expression.ExtractMemberExpression().PrintMemberName(minMemberNameLength);
+                string memberName = expression.PrintMemberName(minMemberNameLength);
                 dynamic value = item.EvaluateValue(expression);
                 return string.Format("{0} = '{1}'", memberName, value);
             }
@@ -23,11 +23,11 @@ namespace ToText
             return string.Empty;
         }
 
-        public static string PrintMemberName(this MemberExpression member, int minResultStringLength = -1)
+        public static string PrintMemberName(this LambdaExpression member, int minResultStringLength = -1)
         {
             if (member == null)
                 return string.Empty;
-            string memberName = member.ComposeMemberName();
+            string memberName = member.ExtractMemberName();
             int memberNameLength = memberName.Length;
             int spacesToFill = minResultStringLength - memberNameLength;
             if (spacesToFill <= 0)

@@ -4,20 +4,20 @@ using System.Linq.Expressions;
 
 namespace ToText
 {
-    public static class ExpressionEvaluation
+    public static class MemberExpressionEvaluation
     {
-        public static bool HasMembers<T>(this IEnumerable<Expression<T>> expressions)
+        public static bool HasMembers(this IEnumerable<LambdaExpression> expressions)
         {
             return expressions.Any(e => e.IsMember());
         }
 
-        public static bool IsMember<T>(this Expression<T> expression)
+        public static bool IsMember(this LambdaExpression expression)
         {
             MemberExpression memberExpression = expression.ExtractMemberExpression();
             return memberExpression != null;
         }
 
-        public static string ExtractMemberName<T>(this Expression<T> expression)
+        public static string ExtractMemberName(this LambdaExpression expression)
         {
             if (expression.IsMember())
             {
@@ -36,7 +36,7 @@ namespace ToText
             return composeMemberName;
         }
 
-        public static MemberExpression ExtractMemberExpression<T>(this Expression<T> expression)
+        public static MemberExpression ExtractMemberExpression(this LambdaExpression expression)
         {
             if (expression == null)
                 return null;

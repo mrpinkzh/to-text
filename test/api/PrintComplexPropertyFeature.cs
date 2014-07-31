@@ -27,5 +27,12 @@ namespace ToText.Api
             string text = miyagisDojo.ToText(d => d.Master.Name);
             Assert.That(text, Is.EqualTo("Dojo: Master.Name = 'Miyagi'"));
         }
+
+        [Test]
+        public void OnDojo_WithMasterAndWithName_ShouldReturnDojoAndMiyagi()
+        {
+            string text = miyagisDojo.ToText(d => d.Master.ToText(m => m.Name));
+            Assert.That(text, Is.EqualTo("Dojo: Master = 'Ninja: Name = 'Miyagi''"));
+        }
     }
 }
