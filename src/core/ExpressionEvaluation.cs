@@ -22,9 +22,18 @@ namespace ToText
             if (expression.IsMember())
             {
                 MemberExpression memberExpression = expression.ExtractMemberExpression();
-                return memberExpression.Member.Name;
+                return memberExpression.ComposeMemberName();
             }
             return string.Empty;
+        }
+
+        public static string ComposeMemberName(this MemberExpression expression)
+        {
+            var childExpression = expression.Expression as MemberExpression;
+            if (childExpression == null)
+                return expression.Member.Name;
+            string composeMemberName = string.Format("{0}.{1}", childExpression.ComposeMemberName(), expression.Member.Name);
+            return composeMemberName;
         }
 
         public static MemberExpression ExtractMemberExpression<T>(this Expression<T> expression)

@@ -49,6 +49,14 @@ namespace ToText
         }
 
         [Test]
+        public void WithNinjaNameLength_ShouldReturnNameLength()
+        {
+            MemberExpression expression = MemberExpressionOf<Ninja>(n => n.Name.Length);
+            string memberName = expression.PrintMemberName();
+            Assert.That(memberName, Is.EqualTo("Name.Length"));
+        }
+
+        [Test]
         public void WithNull_ShouldReturnEmptyString()
         {
             MemberExpression expression = null;

@@ -27,7 +27,7 @@ namespace ToText
         {
             if (member == null)
                 return string.Empty;
-            string memberName = member.Member.Name;
+            string memberName = member.ComposeMemberName();
             int memberNameLength = memberName.Length;
             int spacesToFill = minResultStringLength - memberNameLength;
             if (spacesToFill <= 0)

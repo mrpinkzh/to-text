@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using NUnit.Framework;
+using ToText.Infrastructure;
 
 namespace ToText
 {
@@ -19,6 +20,22 @@ namespace ToText
         {
             string memberName = stringLengthObjectExpression.ExtractMemberName();
             Assert.That(memberName, Is.EqualTo("Length"));
+        }
+
+        [Test]
+        public void WithMasterName_ShouldReturnMasterName()
+        {
+            Expression<Func<Dojo, string>> masterNameExpression = d => d.Master.Name;
+            string memberName = masterNameExpression.ExtractMemberName();
+            Assert.That(memberName, Is.EqualTo("Master.Name"));
+        }
+
+        [Test]
+        public void WithMasterNameLength_ShouldReturnMasterNameLength()
+        {
+            Expression<Func<Dojo, int>> masterNameExpression = d => d.Master.Name.Length;
+            string memberName = masterNameExpression.ExtractMemberName();
+            Assert.That(memberName, Is.EqualTo("Master.Name.Length"));
         }
 
         [Test]
