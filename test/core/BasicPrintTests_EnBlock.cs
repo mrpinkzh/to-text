@@ -6,18 +6,8 @@ using ToText.Api.Infrastructure;
 namespace ToText
 {
     [TestFixture]
-    public class BasePrintTests
+    public class BasicPrintTests_EnBlock
     {
-        private string firstString;
-        private string secondString;
-
-        [SetUp]
-        public void SetupContext()
-        {
-            firstString = CreateRandom.String();
-            secondString = CreateRandom.String();
-        }
-
         [Test]
         public void EnBlock_WithTwoStrings_ShouldSeparateThemWithNewLine()
         {
@@ -39,6 +29,7 @@ namespace ToText
         [Test]
         public void EnBlock_WithOneString_ShouldReturnString()
         {
+            string firstString = CreateRandom.String();
             string block = new[] {firstString}.EnBlock(s => s.ToString());
             Assert.That(block, Is.EqualTo(firstString));
         }
@@ -49,6 +40,15 @@ namespace ToText
             IEnumerable<int> ints = null;
             string enBlock = ints.EnBlock(i => i.ToString());
             Assert.That(enBlock, Is.EqualTo("null"));
+        }
+
+        [Test]
+        public void EnBlock_WithNull_ShouldReturnStringValues()
+        {
+            IEnumerable<int> ints = new[] {2, 3};
+            string block = ints.EnBlock(null);
+            Assert.That(block, Is.EqualTo("2" + Environment.NewLine +
+                                          "3"));
         }
     }
 }

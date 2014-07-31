@@ -10,13 +10,15 @@ namespace ToText
         {
             if (items == null)
                 return "null";
+            if (printMethod == null)
+                printMethod = t => t.ToString();
             return string.Join(Environment.NewLine, items.Select(printMethod));
         }
 
         public static string Spaces(this int amount)
         {
-            if (amount == 1)
-                return " ";
+            if (amount <= 0)
+                return string.Empty;
             return string.Format(" {0}",(amount - 1).Spaces());
         }
 

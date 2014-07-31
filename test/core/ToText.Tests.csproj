@@ -38,7 +38,8 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasePrintTests.cs" />
+    <Compile Include="BasicPrintTests_EnBlock.cs" />
+    <Compile Include="BasicPrintTests_Spaces.cs" />
     <Compile Include="Infrastructure\CreateRandom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
