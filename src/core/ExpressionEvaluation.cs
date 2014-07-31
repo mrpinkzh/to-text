@@ -17,18 +17,6 @@ namespace ToText
             return memberExpression != null;
         }
 
-        public static MemberExpression ExtractMemberExpression<T>(this Expression<T> expression)
-        {
-            Expression body = expression.Body;
-            var memberExpression = body as MemberExpression;
-            if (memberExpression != null)
-                return memberExpression;
-            var unaryExpression = body as UnaryExpression;
-            if (unaryExpression != null)
-                memberExpression = unaryExpression.Operand as MemberExpression;
-            return memberExpression;
-        }
-
         public static string ExtractMemberName<T>(this Expression<T> expression)
         {
             if (expression.IsMember())
@@ -37,6 +25,20 @@ namespace ToText
                 return memberExpression.Member.Name;
             }
             return string.Empty;
+        }
+
+        public static MemberExpression ExtractMemberExpression<T>(this Expression<T> expression)
+        {
+            if (expression == null)
+                return null;
+            Expression body = expression.Body;
+            var memberExpression = body as MemberExpression;
+            if (memberExpression != null)
+                return memberExpression;
+            var unaryExpression = body as UnaryExpression;
+            if (unaryExpression != null)
+                memberExpression = unaryExpression.Operand as MemberExpression;
+            return memberExpression;
         }
     }
 }

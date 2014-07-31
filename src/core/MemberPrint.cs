@@ -7,6 +7,14 @@ namespace ToText
 {
     public static class MemberPrint
     {
+        public static IEnumerable<string> PrintMembers<T>(
+            this IEnumerable<Expression<Func<T, dynamic>>> expressions,
+            T item,
+            int minMemberNameLength = -1)
+        {
+            return expressions.Select(exp => exp.PrintMember(item, minMemberNameLength)).Where(m => m != null);
+        }
+
         public static string PrintMember<T>(this Expression<Func<T, dynamic>> expression, T item, int minMemberNameLength = -1)
         {
             if (expression.IsMember())
@@ -16,14 +24,6 @@ namespace ToText
                 return string.Format("{0} = '{1}'", memberName, value);
             }
             return null;
-        }
-
-        public static IEnumerable<string> PrintMembers<T>(
-            this IEnumerable<Expression<Func<T, dynamic>>> expressions,
-            T item,
-            int minMemberNameLength = -1)
-        {
-            return expressions.Select(exp => exp.PrintMember(item, minMemberNameLength)).Where(m => m != null);
         }
 
         public static string PrintMemberName(this MemberExpression member, int minResultStringLength = -1)
