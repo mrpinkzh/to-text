@@ -35,6 +35,16 @@ namespace ToText
         }
 
         [Test]
+        public void EnBlock_WithIntsAndIndentation3_ShouldIndentFollowerLinesWithThreeSpaces()
+        {
+            IEnumerable<int> ints = new[] {1, 2, 3};
+            string block = ints.EnBlock(i => i.ToString(), indentationOfFollowingLines:3);
+            Assert.That(block, Is.EqualTo("1" + Environment.NewLine +
+                                          "   2" + Environment.NewLine +
+                                          "   3"));
+        }
+
+        [Test]
         public void EnBock_OnNull_ShouldReturnEmptyString()
         {
             IEnumerable<int> ints = null;
