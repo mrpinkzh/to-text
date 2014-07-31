@@ -8,7 +8,7 @@ namespace ToText
     {
         public static bool HasMembers(this IEnumerable<LambdaExpression> expressions)
         {
-            return expressions.Any(e => e.IsMember());
+            return expressions.Any(e => e.IsMember() || e.IsToText());
         }
 
         public static bool IsMember(this LambdaExpression expression)
@@ -47,6 +47,9 @@ namespace ToText
             var unaryExpression = body as UnaryExpression;
             if (unaryExpression != null)
                 memberExpression = unaryExpression.Operand as MemberExpression;
+            var methodCallExpression = body as MethodCallExpression;
+            if (methodCallExpression.IsToText())
+                return methodCallExpression.Arguments[0] as MemberExpression;
             return memberExpression;
         }
     }

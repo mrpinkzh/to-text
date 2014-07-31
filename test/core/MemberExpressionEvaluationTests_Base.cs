@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace ToText
 {
-    public class ExpressionEvaluationTests_Base
+    public class MemberExpressionEvaluationTests_Base
     {
         protected Expression<Func<string, int>> stringLengthExpression;
         protected Expression<Func<string, object>> stringLengthObjectExpression;
@@ -14,6 +14,11 @@ namespace ToText
         {
             stringLengthExpression = s => s.Length;
             stringLengthObjectExpression = s => s.Length;
+        }
+
+        protected LambdaExpression ExpressionOf<T>(Expression<Func<T, object>> expression)
+        {
+            return expression;
         }
     }
 }

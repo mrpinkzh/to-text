@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Linq.Expressions;
 using NUnit.Framework;
+using ToText.Api;
 using ToText.Infrastructure;
 
 namespace ToText
 {
     [TestFixture]
-    public class ExpressionEvaluationTests_ExtractMemberName : ExpressionEvaluationTests_Base
+    public class MemberExpressionEvaluationTests_ExtractMemberName : MemberExpressionEvaluationTests_Base
     {
         [Test]
         public void WithStringLength_ShouldReturnLength()
@@ -44,6 +45,14 @@ namespace ToText
             Expression<Func<string, object>> expression = null;
             string memberName = expression.ExtractMemberName();
             Assert.That(memberName, Is.Empty);
+        }
+
+        [Test]
+        public void WithMasterToText_ShouldReturnMaster()
+        {
+            Expression<Func<Dojo, string>> masterNameExpression = d => d.Master.ToText(m => m.Name);
+            string memberName = masterNameExpression.ExtractMemberName();
+            Assert.That(memberName, Is.EqualTo("Master"));
         }
     }
 }

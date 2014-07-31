@@ -19,36 +19,29 @@ namespace ToText
         [Test]
         public void WithNarutoAndName_ShouldRerturnNameNaruto()
         {
-            string member = MemberPrint.PrintMember(n => n.Name, naruto);
+            string member = naruto.PrintMember(n => n.Name);
             Assert.That(member, Is.EqualTo("Name = 'Naruto'"));
         }
 
         [Test]
         public void WithKazujamaAndAge_ShouldReturnAge30()
         {
-            string member = MemberPrint.PrintMember(n => n.Age, kazujama);
+            string member = kazujama.PrintMember(k => k.Age);
             Assert.That(member, Is.EqualTo("Age = '30'"));
         }
 
         [Test]
         public void WithNarutoAndAgeAnd5_ShouldReturnAgeWithSpacesAnd12()
         {
-            string member = MemberPrint.PrintMember(n => n.Age, naruto, minMemberNameLength:5);
+            string member = naruto.PrintMember(k => k.Age, minMemberNameLength:5);
             Assert.That(member, Is.EqualTo("Age   = '12'"));
         }
 
         [Test]
         public void WithNullAndAge_ShouldReturnAgeAndEmptyString()
         {
-            string member = MemberPrint.PrintMember(n => n.Age, (Ninja) null);
+            string member = MemberPrint.PrintMember((Ninja) null, n => n.Age);
             Assert.That(member, Is.EqualTo("Age = ''"));
-        }
-
-        [Test]
-        public void WithNarutoAndNull_ShouldReturnEmptyString()
-        {
-            string member = MemberPrint.PrintMember(null, naruto);
-            Assert.That(member, Is.Empty);
         }
     }
 }

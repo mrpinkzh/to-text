@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace ToText
 {
     [TestFixture]
-    public class ExpressionEvaluationTests_IsMember : ExpressionEvaluationTests_Base
+    public class MemberExpressionEvaluationTests_IsMember : MemberExpressionEvaluationTests_Base
     {
         [Test]
         public void WithStringLength_ShouldReturnTrue()

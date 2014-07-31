@@ -5,15 +5,11 @@ namespace ToText
 {
     public static class MemberPrint
     {
-        public static string PrintMember<T>(this Expression<Func<T, dynamic>> expression, T item, int minMemberNameLength = -1)
+        public static string PrintMember<T>(this T item, Expression<Func<T, dynamic>> expression, int minMemberNameLength = -1)
         {
-            if (expression.IsMember())
-            {
-                string memberName = expression.PrintMemberName(minMemberNameLength);
-                dynamic value = item.EvaluateValue(expression);
-                return string.Format("{0} = '{1}'", memberName, value);
-            }
-            return string.Empty;
+            string memberName = expression.PrintMemberName(minMemberNameLength);
+            dynamic value = item.EvaluateValue(expression);
+            return string.Format("{0} = '{1}'", memberName, value);
         }
 
         private static dynamic EvaluateValue<T>(this T item, Expression<Func<T, dynamic>> expression)

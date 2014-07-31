@@ -16,7 +16,7 @@ namespace ToText.Api
                 int minMemberNameSize = members.MaxMemberLength();
                 if (members.HasMembers())
                 {
-                    string memberBlock = members.EnBlock(m => m.PrintMember(item, minMemberNameSize), indentationOfFollowingLines);
+                    string memberBlock = members.EnBlock(m => item.PrintMember(m, minMemberNameSize), indentationOfFollowingLines);
                     return string.Format("{0}{2}{1}", type, memberBlock, ClassToPropertySeparator);
                 }
             }
