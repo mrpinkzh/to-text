@@ -45,6 +45,7 @@
     <Compile Include="ExpressionEvaluationTests_ExtractMemberName.cs" />
     <Compile Include="ExpressionEvaluationTests_IsMember.cs" />
     <Compile Include="Infrastructure\CreateRandom.cs" />
+    <Compile Include="Infrastructure\Dojo.cs" />
     <Compile Include="Infrastructure\Ninja.cs" />
     <Compile Include="Infrastructure\Shinobi.cs" />
     <Compile Include="MemberPrintTests_PrintMember.cs" />

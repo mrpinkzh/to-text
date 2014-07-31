@@ -38,6 +38,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PrintComplexPropertyFeature.cs" />
     <Compile Include="PrintMultiplePropertiesFeature.cs" />
     <Compile Include="PrintSinglePropertyFeature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
