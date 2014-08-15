@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace ToText.Api
@@ -21,6 +23,11 @@ namespace ToText.Api
                 }
             }
             return type;
+        }
+
+        public static string ToText<T>(this IEnumerable<T> items, params Expression<Func<T, dynamic>>[] itemMembers)
+        {
+            return items.Select(i => i.ToText(itemMembers)).ToValueString();
         }
     }
 }

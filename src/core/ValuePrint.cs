@@ -7,11 +7,24 @@ namespace ToText
 {
     public static class ValuePrint
     {
-        public static string PrintValue(dynamic value)
+        public static string DelimitedPrintValue(dynamic value, string valueDelimiter = "'")
         {
-            //if value is normal -> toString
-            //if value is enumerable -> PrintEnumerable
-            throw new NotImplementedException();
+            if (value == null)
+                return string.Format("{0}{1}", valueDelimiter.Length.Spaces(), ToString(value));
+            string printedValue = PrintValue(value);
+            return string.Format("{0}{1}{0}", valueDelimiter, printedValue);
+        }
+
+        private static string PrintValue(
+            dynamic value)
+        {
+            var stringValue = value as string;
+            if (stringValue != null)
+                return stringValue;
+            var enumerable = value as IEnumerable;
+            if (enumerable != null)
+                return enumerable.ToValueString();
+            return ToString(value);
         }
 
         public static string ToValueString(
@@ -20,8 +33,10 @@ namespace ToText
             string longStringSeparator = ",\r\n",
             int shortStringLimit = 100)
         {
+            if (enumerable == null)
+                return "null";
             IEnumerable<object> values = enumerable.Cast<object>();
-            IEnumerable<string> valueStrings = values.Select(v => v.ToString()).ToList();
+            IEnumerable<string> valueStrings = values.Select(ToString).ToList();
             if (valueStrings.HasLongerStringsOrNewLines(shortStringLimit))
                 return string.Join(longStringSeparator, valueStrings);    
             return string.Join(shortStringSeparator, valueStrings);
@@ -30,6 +45,13 @@ namespace ToText
         public static bool HasLongerStringsOrNewLines(this IEnumerable<string> strings, int shortStringlimit)
         {
             return strings.Any(s => s.Contains(Environment.NewLine) || s.Length > shortStringlimit);
+        }
+
+        public static string ToString(object anyObject)
+        {
+            if (anyObject == null)
+                return "null";
+            return anyObject.ToString();
         }
     }
 }

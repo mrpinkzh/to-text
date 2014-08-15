@@ -11,14 +11,14 @@ namespace ToText.Api
         [SetUp]
         public void SetupContext()
         {
-            edo = new City {Dojos = new[] {new Dojo(), new Dojo()}};
+            edo = new City {Dojos = new[] {new Dojo {Name = "Dojo Tsubasa"}, new Dojo()}};
         }
 
         [Test]
         public void OnCityWithTwoDojos_ShouldReturnBoth()
         {
-            string text = edo.ToText(c => c.Dojos);
-            Assert.That(text, Is.EqualTo("City: Dojos = 'Dojo, Dojo'"));
+            string text = edo.ToText(c => c.Dojos.ToText(d => d.Name));
+            Assert.That(text, Is.EqualTo("City: Dojos = 'Dojo: Name = 'Dojo Tsubasa', Dojo: Name =  null'"));
         }
     }
 }

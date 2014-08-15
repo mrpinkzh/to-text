@@ -14,10 +14,11 @@ namespace ToText
             string memberName = expression.PrintMemberName(minMemberNameLength);
             if (expression.IsMember())
             {
-                string value = item.EvaluateValue(expression).ToString();
-                IEnumerable<string> valuesMultiLined = value.ExtractLines();
+                dynamic value = item.EvaluateValue(expression);
+                string printedValue = ValuePrint.DelimitedPrintValue(value, ValueDelimiter);
+                IEnumerable<string> valuesMultiLined = printedValue.ExtractLines();
                 int indentationOfFollowingLines = memberName.Length + MemberNameValueSeparator.Length + ValueDelimiter.Length;
-                return string.Format("{0}{1}{3}{2}{3}", memberName, MemberNameValueSeparator, valuesMultiLined.EnBlock(s => s.ToString(), indentationOfFollowingLines), ValueDelimiter);
+                return string.Format("{0}{1}{2}", memberName, MemberNameValueSeparator, valuesMultiLined.EnBlock(s => s.ToString(), indentationOfFollowingLines));
             }
             return string.Empty;
         }

@@ -54,6 +54,7 @@
     <Compile Include="MemberPrintTests_PrintMember.cs" />
     <Compile Include="MemberPrintTests_PrintMemberName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValuePrintTests_DelimitedPrintValue.cs" />
     <Compile Include="ValuePrintTests_ToValueString.cs" />
   </ItemGroup>
   <ItemGroup>

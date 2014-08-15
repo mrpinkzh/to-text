@@ -36,6 +36,14 @@ namespace ToText
         }
 
         [Test]
+        public void OnMixedArray_ShouldReturnCommaSeparated()
+        {
+            var mixed = new dynamic[] {"string", 5};
+            string valueString = mixed.ToValueString();
+            Assert.That(valueString, Is.EqualTo("string, 5"));
+        }
+
+        [Test]
         public void OnComplexObjectWithToTextSelection_ShouldReturnCommaSeparated()
         {
             var ninjas = new[] {naruto, matsujama};
@@ -62,6 +70,22 @@ namespace ToText
             string valueString = longStrings.ToValueString(shortStringLimit: 25);
             Assert.That(valueString, Is.EqualTo("shorty," + "\r\n" +
                                                 "and his much much much much much much longer brother"));
+        }
+
+        [Test]
+        public void OnNullValues_ShouldReturnNull()
+        {
+            var strings = new[] {"Hey Jude", null};
+            string valueString = strings.ToValueString();
+            Assert.That(valueString, Is.EqualTo("Hey Jude, null"));
+        }
+
+        [Test]
+        public void OnNull_ShouldReturnNull()
+        {
+            int[] array = null;
+            string valueString = array.ToValueString();
+            Assert.That(valueString, Is.EqualTo("null"));
         }
     }
 }
