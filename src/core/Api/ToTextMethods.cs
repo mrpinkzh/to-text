@@ -37,9 +37,14 @@ namespace ToText.Api
             return item.ToText(Format.Default(), members);
         }
 
+        public static string ToText<T>(this IEnumerable<T> items, FormatConfiguration configuration, params Expression<Func<T, dynamic>>[] itemMembers)
+        {
+            return items.Select(i => i.ToText(configuration, itemMembers)).ToValueString();
+        }
+
         public static string ToText<T>(this IEnumerable<T> items, params Expression<Func<T, dynamic>>[] itemMembers)
         {
-            return items.Select(i => i.ToText(itemMembers)).ToValueString();
+            return ToText(items, Format.Default(), itemMembers);
         }
     }
 }
