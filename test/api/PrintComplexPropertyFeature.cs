@@ -42,7 +42,7 @@ namespace ToText.Api
             string text = miyagisDojo.ToText(d => d.Master.ToText(m => m.Name,
                                                                   m => m.Age  ));
             Assert.That(text, Is.EqualTo("Dojo: Master = 'Ninja: Name = 'Miyagi'" + Environment.NewLine +
-                                         "                       Age  = '78'"));
+                                         "                       Age  = '78''"));
         }
     }
 }

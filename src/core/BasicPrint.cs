@@ -15,8 +15,15 @@ namespace ToText
                 return "null";
             if (printMethod == null)
                 printMethod = t => t.ToString();
-            return string.Join(Environment.NewLine + indentationOfFollowingLines.Spaces(), items.Select(printMethod));
+            IEnumerable<string> methods = items.Select(printMethod);
+            IEnumerable<string> lines = methods.SelectMany(m => m.Split(new[] {Environment.NewLine}, StringSplitOptions.None));
+            return string.Join(Environment.NewLine + indentationOfFollowingLines.Spaces(), lines);
         }
+        
+        public static IEnumerable<string> ExtractLines(this string block)
+        {
+            return block.Split(new[] {Environment.NewLine}, StringSplitOptions.None);
+        } 
 
         public static string Spaces(this int amount)
         {
