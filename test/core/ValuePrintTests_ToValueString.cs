@@ -54,5 +54,14 @@ namespace ToText
                                                 "Ninja: Name = 'Matsujama'" + Environment.NewLine +
                                                 "       Age  = '31'"));
         }
+
+        [Test]
+        public void OnTwoLongStrings_ShouldReturnNewLineSeparated()
+        {
+            var longStrings = new[] {"shorty", "and his much much much much much much longer brother"};
+            string valueString = longStrings.ToValueString(shortStringLimit: 25);
+            Assert.That(valueString, Is.EqualTo("shorty," + "\r\n" +
+                                                "and his much much much much much much longer brother"));
+        }
     }
 }

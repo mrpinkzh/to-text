@@ -17,14 +17,19 @@ namespace ToText
         public static string ToValueString(
             this IEnumerable enumerable, 
             string shortStringSeparator = ", ",
-            string longStringSeparator = ",\r\n")
+            string longStringSeparator = ",\r\n",
+            int shortStringLimit = 100)
         {
             IEnumerable<object> values = enumerable.Cast<object>();
             IEnumerable<string> valueStrings = values.Select(v => v.ToString()).ToList();
-            bool anyNewLine = valueStrings.Any(s => s.Contains(Environment.NewLine));
-            if (anyNewLine)
+            if (valueStrings.HasLongerStringsOrNewLines(shortStringLimit))
                 return string.Join(longStringSeparator, valueStrings);    
             return string.Join(shortStringSeparator, valueStrings);
+        }
+
+        public static bool HasLongerStringsOrNewLines(this IEnumerable<string> strings, int shortStringlimit)
+        {
+            return strings.Any(s => s.Contains(Environment.NewLine) || s.Length > shortStringlimit);
         }
     }
 }
