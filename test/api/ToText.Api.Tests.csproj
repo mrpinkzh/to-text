@@ -41,6 +41,7 @@
     <Compile Include="PrintComplexPropertyFeature.cs" />
     <Compile Include="PrintMultiplePropertiesFeature.cs" />
     <Compile Include="PrintNoPropertyFeature.cs" />
+    <Compile Include="PrintSimpleEnumerablePropertyFeature.cs" />
     <Compile Include="PrintSinglePropertyFeature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
