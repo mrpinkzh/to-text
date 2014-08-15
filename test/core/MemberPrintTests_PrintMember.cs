@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using ToText.Core;
 using ToText.Infrastructure;
 
 namespace ToText

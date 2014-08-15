@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace ToText
+namespace ToText.Core
 {
     public static class CallMethodExpressionEvaluation
     {

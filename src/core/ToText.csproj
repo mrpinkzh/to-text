@@ -35,17 +35,20 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\Format.cs" />
-    <Compile Include="Api\ToTextMethods.cs" />
-    <Compile Include="BasicPrint.cs" />
-    <Compile Include="CallMethodExpressionEvaluation.cs" />
     <Compile Include="Configuration\EnumerableConfiguration.cs" />
     <Compile Include="Configuration\FormatConfiguration.cs" />
-    <Compile Include="MemberExpressionEvaluation.cs" />
-    <Compile Include="IndentationEvaluation.cs" />
-    <Compile Include="MemberPrint.cs" />
+    <Compile Include="Core\BasicPrint.cs" />
+    <Compile Include="Core\CallMethodExpressionEvaluation.cs" />
+    <Compile Include="Core\Format.cs" />
+    <Compile Include="Core\IndentationEvaluation.cs" />
+    <Compile Include="Core\MemberExpressionEvaluation.cs" />
+    <Compile Include="Core\MemberPrint.cs" />
+    <Compile Include="Core\ToTextMethods.cs" />
+    <Compile Include="Core\ValuePrint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValuePrint.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Api\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

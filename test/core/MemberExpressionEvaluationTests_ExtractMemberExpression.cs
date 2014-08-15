@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 using NUnit.Framework;
 using ToText.Api;
+using ToText.Core;
 using ToText.Infrastructure;
 
 namespace ToText

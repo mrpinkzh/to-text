@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using ToText.Api.Infrastructure;
+using ToText.Core;
 using ToText.Infrastructure;
 
 namespace ToText.Api

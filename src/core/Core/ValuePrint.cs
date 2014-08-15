@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ToText.Api;
 using ToText.Configuration;
 
-namespace ToText
+namespace ToText.Core
 {
     public static class ValuePrint
     {

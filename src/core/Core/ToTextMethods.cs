@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using ToText.Configuration;
 
-namespace ToText.Api
+namespace ToText.Core
 {
     public static class ToTextMethods
     {

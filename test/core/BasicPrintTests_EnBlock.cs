@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using ToText.Api.Infrastructure;
+using ToText.Core;
 
 namespace ToText
 {

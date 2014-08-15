@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace ToText
+namespace ToText.Core
 {
     public static class IndentationEvaluation
     {
@@ -13,7 +13,7 @@ namespace ToText
 
         public static int MaxMemberLength(this IEnumerable<LambdaExpression> expressions)
         {
-            return expressions.Max(exp => exp.EvaluateMemberLength());
+            return expressions.Max(exp => EvaluateMemberLength(exp));
         }
     }
 }

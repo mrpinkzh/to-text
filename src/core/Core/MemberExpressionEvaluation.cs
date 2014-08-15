@@ -2,13 +2,13 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace ToText
+namespace ToText.Core
 {
     public static class MemberExpressionEvaluation
     {
         public static bool HasMembers(this IEnumerable<LambdaExpression> expressions)
         {
-            return expressions.Any(e => e.IsMember() || e.IsToText());
+            return expressions.Any(e => IsMember(e) || CallMethodExpressionEvaluation.IsToText((LambdaExpression) e));
         }
 
         public static bool IsMember(this LambdaExpression expression)
