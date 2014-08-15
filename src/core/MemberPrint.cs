@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using ToText.Api;
+using ToText.Configuration;
 
 namespace ToText
 {
@@ -9,13 +11,20 @@ namespace ToText
         private const string MemberNameValueSeparator = " = ";
         private const string ValueDelimiter = "'";
 
-        public static string PrintMember<T>(this T item, Expression<Func<T, dynamic>> expression, int minMemberNameLength = -1, int baseIndentation = 0)
+        public static string PrintMember<T>(
+            this T item, 
+            Expression<Func<T, dynamic>> expression, 
+            int minMemberNameLength = -1, 
+            int baseIndentation = 0,
+            FormatConfiguration configuration = null)
         {
+            if (configuration == null)
+                configuration = Format.Default();
             string memberName = expression.PrintMemberName(minMemberNameLength);
             if (expression.IsMember())
             {
                 dynamic value = item.EvaluateValue(expression);
-                string printedValue = ValuePrint.DelimitedPrintValue(value, ValueDelimiter);
+                string printedValue = ValuePrint.DelimitedPrintValue(value, configuration);
                 IEnumerable<string> valuesMultiLined = printedValue.ExtractLines();
                 int indentationOfFollowingLines = memberName.Length + MemberNameValueSeparator.Length + ValueDelimiter.Length;
                 return string.Format("{0}{1}{2}", memberName, MemberNameValueSeparator, valuesMultiLined.EnBlock(s => s.ToString(), indentationOfFollowingLines));

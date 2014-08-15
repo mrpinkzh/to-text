@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using ToText.Api;
 
 namespace ToText
 {
@@ -31,6 +32,20 @@ namespace ToText
         {
             string result = ValuePrint.DelimitedPrintValue(null);
             Assert.That(result, Is.EqualTo(" null"));
+        }
+
+        [Test]
+        public void WithNullDelimiter_ShouldReturnUndelimitedString()
+        {
+            string result = ValuePrint.DelimitedPrintValue("string", Format.Configure(valueDelimiter:null));
+            Assert.That(result, Is.EqualTo("string"));
+        }
+
+        [Test]
+        public void WithNullAndNullDelimiter_ShouldReturnUndelimitedNull()
+        {
+            string result = ValuePrint.DelimitedPrintValue(null, Format.Configure(valueDelimiter:null));
+            Assert.That(result, Is.EqualTo("null"));
         }
     }
 }

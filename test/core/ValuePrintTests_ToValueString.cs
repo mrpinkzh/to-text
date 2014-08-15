@@ -67,7 +67,7 @@ namespace ToText
         public void OnTwoLongStrings_ShouldReturnNewLineSeparated()
         {
             var longStrings = new[] {"shorty", "and his much much much much much much longer brother"};
-            string valueString = longStrings.ToValueString(shortStringLimit: 25);
+            string valueString = longStrings.ToValueString(Format.Configure(enumerableShortStringLimit:25));
             Assert.That(valueString, Is.EqualTo("shorty," + "\r\n" +
                                                 "and his much much much much much much longer brother"));
         }
