@@ -39,17 +39,15 @@
     <Compile Include="Configuration\FormatConfiguration.cs" />
     <Compile Include="Core\BasicPrint.cs" />
     <Compile Include="Core\CallMethodExpressionEvaluation.cs" />
-    <Compile Include="Core\Format.cs" />
     <Compile Include="Core\IndentationEvaluation.cs" />
     <Compile Include="Core\MemberExpressionEvaluation.cs" />
     <Compile Include="Core\MemberPrint.cs" />
-    <Compile Include="Core\ToTextMethods.cs" />
     <Compile Include="Core\ValuePrint.cs" />
+    <Compile Include="Format.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ToTextMethods.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Api\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

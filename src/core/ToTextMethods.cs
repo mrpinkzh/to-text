@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using ToText.Configuration;
+using ToText.Core;
 
-namespace ToText.Core
+namespace ToText
 {
     public static class ToTextMethods
     {

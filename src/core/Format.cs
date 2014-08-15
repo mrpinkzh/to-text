@@ -1,7 +1,7 @@
 ﻿using System;
 using ToText.Configuration;
 
-namespace ToText.Core
+namespace ToText
 {
     public static class Format
     {
