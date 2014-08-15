@@ -33,5 +33,12 @@ namespace ToText.Api
             Assert.That(ninja.ToText(n => n.Hide()),
                 Is.EqualTo("Ninja"));
         }
+
+        [Test]
+        public void OnNull_ShouldReturnNull()
+        {
+            Ninja ninja = null;
+            Assert.That(ninja.ToText(n => n.Name), Is.EqualTo("null"));
+        }
     }
 }

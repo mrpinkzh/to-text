@@ -13,6 +13,8 @@ namespace ToText.Core
             FormatConfiguration configuration,
             params Expression<Func<T, dynamic>>[] members)
         {
+            if (item == null)
+                return configuration.NullValueString;
             string type = typeof(T).Name;
             int indentationOfFollowingLines = type.Length + configuration.ClassToPropertySeparator.Length;
             if (members.Length > 0)
