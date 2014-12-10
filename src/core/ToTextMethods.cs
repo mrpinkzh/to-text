@@ -16,20 +16,21 @@ namespace ToText
         {
             if (item == null)
                 return configuration.NullValueString;
-            if (members.Length > 0)
+
+            if (members.Length <= 0) 
+                return typeof (T).Name;
+
+            int minMemberNameSize = members.MaxMemberLength();
+            if (members.HasMembers())
             {
-                int minMemberNameSize = members.MaxMemberLength();
-                if (members.HasMembers())
-                {
-                    PrintedType printedType = Functions.PrintType(typeof(T), configuration.ClassToPropertySeparator);
-                    string memberBlock = members.EnBlock(
-                                                    m => item.PrintMember(
-                                                                    m, 
-                                                                    minMemberNameSize, 
-                                                                    configuration:configuration), 
-                                                    printedType.length);
-                    return string.Format("{0}{1}", printedType.value, memberBlock);
-                }
+                PrintedType printedType = Functions.PrintType(typeof(T), configuration.ClassToPropertySeparator);
+                string memberBlock = members.EnBlock(
+                    m => item.PrintMember(
+                        m, 
+                        minMemberNameSize, 
+                        configuration:configuration), 
+                    printedType.length);
+                return string.Format("{0}{1}", printedType.value, memberBlock);
             }
             return typeof(T).Name;
         }
