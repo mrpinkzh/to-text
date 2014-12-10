@@ -16,23 +16,22 @@ namespace ToText
         {
             if (item == null)
                 return configuration.NullValueString;
-            string type = typeof(T).Name;
-            int indentationOfFollowingLines = type.Length + configuration.ClassToPropertySeparator.Length;
             if (members.Length > 0)
             {
                 int minMemberNameSize = members.MaxMemberLength();
                 if (members.HasMembers())
                 {
+                    PrintedType printedType = Functions.PrintType(typeof(T), configuration.ClassToPropertySeparator);
                     string memberBlock = members.EnBlock(
                                                     m => item.PrintMember(
                                                                     m, 
                                                                     minMemberNameSize, 
                                                                     configuration:configuration), 
-                                                    indentationOfFollowingLines);
-                    return string.Format("{0}{2}{1}", type, memberBlock, configuration.ClassToPropertySeparator);
+                                                    printedType.length);
+                    return string.Format("{0}{1}", printedType.value, memberBlock);
                 }
             }
-            return type;
+            return typeof(T).Name;
         }
 
         public static string ToText<T>(this T item, params Expression<Func<T, dynamic>>[] members)
