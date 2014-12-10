@@ -20,19 +20,18 @@ namespace ToText
             if (members.Length <= 0) 
                 return typeof (T).Name;
 
+            if (!members.HasMembers())
+                return typeof (T).Name;
+
             int minMemberNameSize = members.MaxMemberLength();
-            if (members.HasMembers())
-            {
-                PrintedType printedType = Functions.PrintType(typeof(T), configuration.ClassToPropertySeparator);
-                string memberBlock = members.EnBlock(
-                    m => item.PrintMember(
-                        m, 
-                        minMemberNameSize, 
-                        configuration:configuration), 
-                    printedType.length);
-                return string.Format("{0}{1}", printedType.value, memberBlock);
-            }
-            return typeof(T).Name;
+            PrintedType printedType = Functions.PrintType(typeof(T), configuration.ClassToPropertySeparator);
+            string memberBlock = members.EnBlock(
+                m => item.PrintMember(
+                    m, 
+                    minMemberNameSize, 
+                    configuration:configuration), 
+                printedType.length);
+            return string.Format("{0}{1}", printedType.value, memberBlock);
         }
 
         public static string ToText<T>(this T item, params Expression<Func<T, dynamic>>[] members)
