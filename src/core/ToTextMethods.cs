@@ -23,8 +23,9 @@ namespace ToText
             if (!members.HasMembers())
                 return typeof (T).Name;
 
-            int minMemberNameSize = members.MaxMemberLength();
             PrintedType printedType = Functions.PrintType(typeof(T), configuration.ClassToPropertySeparator);
+            IReadOnlyCollection<Accessor<T>> accessors = Functions.CreateAccessors(item, members);
+            int minMemberNameSize = members.MaxMemberLength();
             string memberBlock = members.EnBlock(
                 m => item.PrintMember(
                     m, 

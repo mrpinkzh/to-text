@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="Configuration\EnumerableConfiguration.cs" />
     <Compile Include="Configuration\FormatConfiguration.cs" />
+    <Compile Include="Core\Accessor.cs" />
     <Compile Include="Core\BasicPrint.cs" />
     <Compile Include="Core\CallMethodExpressionEvaluation.cs" />
     <Compile Include="Core\Functions.cs" />
