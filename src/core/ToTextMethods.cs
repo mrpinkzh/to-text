@@ -25,6 +25,7 @@ namespace ToText
 
             PrintedType printedType = Functions.PrintType(typeof(T), configuration.ClassToPropertySeparator);
             IReadOnlyCollection<Accessor<T>> accessors = Functions.CreateAccessors(item, members);
+            //IReadOnlyCollection<PropertyValueTuple> propertyValueList = Functions.EvaluatePropertyValues(accessors);
             int minMemberNameSize = members.MaxMemberLength();
             string memberBlock = members.EnBlock(
                 m => item.PrintMember(

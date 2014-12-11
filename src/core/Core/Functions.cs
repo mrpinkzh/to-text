@@ -25,5 +25,15 @@ namespace ToText.Core
             }
             return accessors;
         }
+
+        public static dynamic EvaluateFunctionValue<T>(Accessor<T> accessor)
+        {
+            if (!typeof(T).IsValueType)
+                if (Equals(accessor.instance, default(T)))
+                    return null;
+            if (accessor.func == null)
+                return null;
+            return accessor.func.Compile()(accessor.instance);
+        }
     }
 }
