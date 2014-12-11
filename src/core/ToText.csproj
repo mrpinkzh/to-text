@@ -45,7 +45,7 @@
     <Compile Include="Core\MemberExpressionEvaluation.cs" />
     <Compile Include="Core\MemberPrint.cs" />
     <Compile Include="Core\PrintedType.cs" />
-    <Compile Include="Core\PropertyValueTuple.cs" />
+    <Compile Include="Core\MemberValueTuple.cs" />
     <Compile Include="Core\ValuePrint.cs" />
     <Compile Include="Format.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

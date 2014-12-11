@@ -7,7 +7,7 @@ using ToText.Infrastructure;
 namespace ToText
 {
     [TestFixture]
-    public class Functions_PrintType
+    public class FunctionsTests_PrintType : FunctionsTests_Base
     {
         [Test]
         public void WithNinjaAndDefaultSeparator_ShouldReturnDefaultNinjaWithLength7()

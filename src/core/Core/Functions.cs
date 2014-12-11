@@ -26,6 +26,13 @@ namespace ToText.Core
             return accessors;
         }
 
+        public static MemberValueTuple EvaluateMemberValue<T>(Accessor<T> accessor)
+        {
+            string name = MemberExpressionEvaluation.ExtractMemberName(accessor.func);
+            dynamic value = EvaluateFunctionValue(accessor);
+            return new MemberValueTuple(name, value);
+        }
+
         public static dynamic EvaluateFunctionValue<T>(Accessor<T> accessor)
         {
             if (!typeof(T).IsValueType)
