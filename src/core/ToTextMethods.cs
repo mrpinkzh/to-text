@@ -27,11 +27,11 @@ namespace ToText
             IReadOnlyCollection<Accessor<T>> accessors = Functions.CreateAccessors(item, members);
             IReadOnlyCollection<MemberValueTuple> memberValueList = accessors.Select(Functions.EvaluateMemberValue).ToList();
             int lengthOfLongestMemberName = memberValueList.Select(mv => mv.name.Length).Max();
-            int minMemberNameSize = members.MaxMemberLength();
+            IReadOnlyCollection<string> memberList = Functions.PrintMemberList(memberValueList, lengthOfLongestMemberName, configuration.ValueDelimiter);
             string memberBlock = members.EnBlock(
                 m => item.PrintMember(
-                    m, 
-                    minMemberNameSize, 
+                    m,
+                    lengthOfLongestMemberName, 
                     configuration:configuration), 
                 printedType.length);
             return string.Format("{0}{1}", printedType.value, memberBlock);

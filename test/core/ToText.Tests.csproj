@@ -44,6 +44,7 @@
     <Compile Include="FunctionsTests_Base.cs" />
     <Compile Include="FunctionsTests_EvaluateMemberValue.cs" />
     <Compile Include="FunctionsTests_EvaluateFunctionTestsValue.cs" />
+    <Compile Include="FunctionsTests_PrintMemberList.cs" />
     <Compile Include="FunctionsTests_PrintType.cs" />
     <Compile Include="Infrastructure\City.cs" />
     <Compile Include="Infrastructure\Structure.cs" />
