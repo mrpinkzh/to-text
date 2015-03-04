@@ -10,5 +10,10 @@
             this.value = value;
             this.length = length;
         }
+
+        public override string ToString()
+        {
+            return string.Format("{{value: {0}, length: {1}}}", value, length);
+        }
     }
 }

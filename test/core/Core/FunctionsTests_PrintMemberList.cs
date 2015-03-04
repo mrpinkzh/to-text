@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using ToText.Core;
 
-namespace ToText
+namespace ToText.Core
 {
     [TestFixture]
     public class FunctionsTests_PrintMemberList

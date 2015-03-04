@@ -1,10 +1,9 @@
 ﻿using System;
 using NUnit.Framework;
 using ToText.Configuration;
-using ToText.Core;
 using ToText.Infrastructure;
 
-namespace ToText
+namespace ToText.Core
 {
     [TestFixture]
     public class FunctionsTests_PrintType : FunctionsTests_Base

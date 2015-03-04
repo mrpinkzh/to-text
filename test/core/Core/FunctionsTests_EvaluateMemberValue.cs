@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
-using ToText.Core;
 using ToText.Infrastructure;
 
-namespace ToText
+namespace ToText.Core
 {
     [TestFixture]
     public class FunctionsTests_EvaluateMemberValue : FunctionsTests_Base

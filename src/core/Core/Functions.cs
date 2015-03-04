@@ -67,55 +67,13 @@ namespace ToText.Core
             return printedMembers;
         }
 
-        private static string PrintMember(MemberValueTuple memberValueTuple, int lengthOfLongestMemberName,
-            FormatConfiguration format)
+        private static string PrintMember(MemberValueTuple memberValueTuple, int lengthOfLongestMemberName, FormatConfiguration format)
         {
             int amountOfSpaces = lengthOfLongestMemberName - memberValueTuple.name.Length;
             string valuePrefix = string.Format("{0}{1} = {2}", memberValueTuple.name, amountOfSpaces.Spaces(), format.ValueDelimiter);
             string memberValueString = memberValueTuple.value.ToNullAwareString(format.NullValueString);
             string indentedValue = IndentationFunctions.HangingIndent(memberValueString, valuePrefix.Length);
             return string.Format("{0}{1}{2}", valuePrefix, indentedValue, format.ValueDelimiter);
-        }
-
-        public static string PrintHangingIndented(string unindentedPrefix, IReadOnlyCollection<string> lines, FormatConfiguration format)
-        {
-            return PrintHangingIndented(unindentedPrefix, string.Join(format.NewLineString, lines), format);
-        }
-
-        public static string PrintHangingIndented(string unindentedPrefix, string indentedBlock, FormatConfiguration format)
-        {
-            string[] blockLines = indentedBlock.Split(new[] {format.NewLineString}, StringSplitOptions.None);
-            string firstLine = string.Format("{0}{1}", unindentedPrefix, blockLines.FirstOrDefault());
-            IEnumerable<string> restLines = Indent(blockLines.Rest(), unindentedPrefix.Length, format);
-            return string.Join(format.NewLineString, List(firstLine, restLines));
-        }
-
-        public static IReadOnlyCollection<string> Indent(IReadOnlyCollection<string> lines, int indentation, FormatConfiguration format)
-        {
-            string firstLine = lines.FirstOrDefault();
-            if (firstLine == null)
-                return new string[0];
-            string indentedFirstLine = Indent(firstLine, indentation, format);
-            IReadOnlyCollection<string> indentedNextLines = Indent(lines.Rest(), indentation, format);
-            return List(indentedFirstLine, indentedNextLines);
-        }
-
-        public static string Indent(string line, int indentation, FormatConfiguration format)
-        {
-            if (line == null)
-                return null;
-            if (format == null)
-                format = Format.Default();
-            string[] subLines = line.Split(new[] {format.NewLineString}, StringSplitOptions.None);
-            IEnumerable<string> indentedSubLines = subLines.Select(x => string.Format("{0}{1}", indentation.Spaces(), x));
-            return string.Join(format.NewLineString, indentedSubLines);
-        } 
-
-        public static IReadOnlyCollection<T> List<T>(T firstItem, IEnumerable<T> restItems)
-        {
-            var list = new List<T>{firstItem};
-            list.AddRange(restItems);
-            return list;
         }
     }
 }

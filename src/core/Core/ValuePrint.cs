@@ -7,33 +7,6 @@ namespace ToText.Core
 {
     public static class ValuePrint
     {
-        public static string DelimitedPrintValue(
-            dynamic value, 
-            FormatConfiguration configuration = null)
-        {
-            if (configuration == null)
-                configuration = Format.Default();
-            if (value == null)
-                return string.Format("{0}{1}", configuration.ValueDelimiter.Length.Spaces(), ToString(value, configuration));
-            string printedValue = PrintValue(value, configuration);
-            return string.Format("{0}{1}{0}", configuration.ValueDelimiter, printedValue);
-        }
-
-        private static string PrintValue(
-            dynamic value,
-            FormatConfiguration configuration = null)
-        {
-            if (configuration == null)
-                configuration = Format.Default();
-            var stringValue = value as string;
-            if (stringValue != null)
-                return stringValue;
-            var enumerable = value as IEnumerable;
-            if (enumerable != null)
-                return enumerable.ToValueString(configuration);
-            return ToString(value, configuration);
-        }
-
         public static string ToValueString(
             this IEnumerable enumerable, 
             FormatConfiguration configuration = null)

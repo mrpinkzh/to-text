@@ -38,16 +38,15 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasicPrintTests_EnBlock.cs" />
     <Compile Include="BasicPrintTests_Spaces.cs" />
     <Compile Include="CallMethodExpressionEvaluationTests_IsToText.cs" />
     <Compile Include="Core\IndentationFunctions_HangingIndent.cs" />
     <Compile Include="Core\IndentationFunctions_Indent.cs" />
-    <Compile Include="FunctionsTests_Base.cs" />
-    <Compile Include="FunctionsTests_EvaluateMemberValue.cs" />
-    <Compile Include="FunctionsTests_EvaluateFunctionTestsValue.cs" />
-    <Compile Include="FunctionsTests_PrintMemberList.cs" />
-    <Compile Include="FunctionsTests_PrintType.cs" />
+    <Compile Include="Core\FunctionsTests_Base.cs" />
+    <Compile Include="Core\FunctionsTests_EvaluateMemberValue.cs" />
+    <Compile Include="Core\FunctionsTests_EvaluateFunctionTestsValue.cs" />
+    <Compile Include="Core\FunctionsTests_PrintMemberList.cs" />
+    <Compile Include="Core\FunctionsTests_PrintType.cs" />
     <Compile Include="Infrastructure\City.cs" />
     <Compile Include="Infrastructure\Structure.cs" />
     <Compile Include="MemberExpressionEvaluationTests_Base.cs" />
@@ -58,10 +57,7 @@
     <Compile Include="Infrastructure\Dojo.cs" />
     <Compile Include="Infrastructure\Ninja.cs" />
     <Compile Include="Infrastructure\Shinobi.cs" />
-    <Compile Include="MemberPrintTests_PrintMember.cs" />
-    <Compile Include="MemberPrintTests_PrintMemberName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValuePrintTests_DelimitedPrintValue.cs" />
     <Compile Include="ValuePrintTests_ToValueString.cs" />
   </ItemGroup>
   <ItemGroup>

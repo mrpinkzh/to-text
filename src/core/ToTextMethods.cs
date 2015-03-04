@@ -29,13 +29,6 @@ namespace ToText
             int lengthOfLongestMemberName = memberValueList.Select(mv => mv.name.Length).Max();
             IReadOnlyCollection<string> memberList = Functions.PrintMemberList(memberValueList, lengthOfLongestMemberName, configuration);
             return IndentationFunctions.HangingIndent(printedType.value, string.Join(configuration.NewLineString, memberList), configuration.NewLineString);
-            string memberBlock = members.EnBlock(
-                m => item.PrintMember(
-                    m,
-                    lengthOfLongestMemberName, 
-                    configuration:configuration), 
-                printedType.length);
-            return string.Format("{0}{1}", printedType.value, memberBlock);
         }
 
         public static string ToText<T>(this T item, params Expression<Func<T, dynamic>>[] members)

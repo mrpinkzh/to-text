@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq.Expressions;
 using NUnit.Framework;
-using ToText.Core;
 using ToText.Infrastructure;
 
-namespace ToText
+namespace ToText.Core
 {
     public class FunctionsTests_Base
     {
