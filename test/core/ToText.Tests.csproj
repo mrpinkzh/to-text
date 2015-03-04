@@ -41,10 +41,11 @@
     <Compile Include="BasicPrintTests_EnBlock.cs" />
     <Compile Include="BasicPrintTests_Spaces.cs" />
     <Compile Include="CallMethodExpressionEvaluationTests_IsToText.cs" />
+    <Compile Include="Core\IndentationFunctions_HangingIndent.cs" />
+    <Compile Include="Core\IndentationFunctions_Indent.cs" />
     <Compile Include="FunctionsTests_Base.cs" />
     <Compile Include="FunctionsTests_EvaluateMemberValue.cs" />
     <Compile Include="FunctionsTests_EvaluateFunctionTestsValue.cs" />
-    <Compile Include="FunctionsTests_PrintHangingIndented.cs" />
     <Compile Include="FunctionsTests_PrintMemberList.cs" />
     <Compile Include="FunctionsTests_PrintType.cs" />
     <Compile Include="Infrastructure\City.cs" />
@@ -72,9 +73,7 @@
       <Name>ToText</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -73,7 +73,7 @@ namespace ToText.Core
             int amountOfSpaces = lengthOfLongestMemberName - memberValueTuple.name.Length;
             string valuePrefix = string.Format("{0}{1} = {2}", memberValueTuple.name, amountOfSpaces.Spaces(), format.ValueDelimiter);
             string memberValueString = memberValueTuple.value.ToNullAwareString(format.NullValueString);
-            string indentedValue = StringFunctions.HangingIndent(memberValueString, valuePrefix.Length);
+            string indentedValue = IndentationFunctions.HangingIndent(memberValueString, valuePrefix.Length);
             return string.Format("{0}{1}{2}", valuePrefix, indentedValue, format.ValueDelimiter);
         }
 

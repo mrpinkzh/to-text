@@ -42,6 +42,7 @@
     <Compile Include="Core\CallMethodExpressionEvaluation.cs" />
     <Compile Include="Core\Functions.cs" />
     <Compile Include="Core\IndentationEvaluation.cs" />
+    <Compile Include="Core\IndentationFunctions.cs" />
     <Compile Include="Core\MemberExpressionEvaluation.cs" />
     <Compile Include="Core\MemberPrint.cs" />
     <Compile Include="Core\PrintedType.cs" />
