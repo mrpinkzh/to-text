@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection.Emit;
+using ToText.Configuration;
 
 namespace ToText.Core
 {
@@ -79,5 +79,51 @@ namespace ToText.Core
                 memberValueTuple.value,
                 delimiter);
         }
+
+        public static string PrintHangingIndented(string unindentedPrefix, IReadOnlyCollection<string> lines, FormatConfiguration format)
+        {
+            return PrintHangingIndented(unindentedPrefix, string.Join(format.NewLineString, lines), format);
+        }
+
+        public static string PrintHangingIndented(string unindentedPrefix, string indentedBlock, FormatConfiguration format)
+        {
+            string[] blockLines = indentedBlock.Split(new[] {format.NewLineString}, StringSplitOptions.None);
+            string firstLine = string.Format("{0}{1}", unindentedPrefix, blockLines.FirstOrDefault());
+            IEnumerable<string> restLines = Indent(blockLines.Rest(), unindentedPrefix.Length, format);
+            return string.Join(format.NewLineString, List(firstLine, restLines));
+        }
+
+        public static IReadOnlyCollection<string> Indent(IReadOnlyCollection<string> lines, int indentation, FormatConfiguration format)
+        {
+            string firstLine = lines.FirstOrDefault();
+            if (firstLine == null)
+                return new string[0];
+            string indentedFirstLine = Indent(firstLine, indentation, format);
+            IReadOnlyCollection<string> indentedNextLines = Indent(lines.Rest(), indentation, format);
+            return List(indentedFirstLine, indentedNextLines);
+        }
+
+        public static string Indent(string line, int indentation, FormatConfiguration format)
+        {
+            if (line == null)
+                return null;
+            if (format == null)
+                format = Format.Default();
+            string[] subLines = line.Split(new[] {format.NewLineString}, StringSplitOptions.None);
+            IEnumerable<string> indentedSubLines = subLines.Select(x => string.Format("{0}{1}", indentation.Spaces(), x));
+            return string.Join(format.NewLineString, indentedSubLines);
+        } 
+
+        public static IReadOnlyCollection<T> List<T>(T firstItem, IEnumerable<T> restItems)
+        {
+            var list = new List<T>{firstItem};
+            list.AddRange(restItems);
+            return list;
+        }
+
+        public static IReadOnlyCollection<T> Rest<T>(this IEnumerable<T> items)
+        {
+            return items.Skip(1).ToList();
+        } 
     }
 }

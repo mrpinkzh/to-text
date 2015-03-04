@@ -3,9 +3,9 @@
     public struct MemberValueTuple
     {
         public readonly string name;
-        public readonly dynamic value;
+        public readonly object value;
 
-        public MemberValueTuple(string name, dynamic value)
+        public MemberValueTuple(string name, object value)
         {
             this.name = name;
             this.value = value;
