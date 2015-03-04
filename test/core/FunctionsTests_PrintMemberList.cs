@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using ToText.Configuration;
 using ToText.Core;
 
 namespace ToText
@@ -12,7 +11,7 @@ namespace ToText
         public void WithMembersAgeAndName_ShouldPrintBoth()
         {
             var memberValueTuples = new[] {MemberValueTuple("Age", 12), MemberValueTuple("Name", "Naruto")};
-            IReadOnlyCollection<string> printedMembers = Functions.PrintMemberList(memberValueTuples, FormatConfiguration.DefaultValueDelimiter);
+            IReadOnlyCollection<string> printedMembers = Functions.PrintMemberList(memberValueTuples, Format.Default());
             Assert.That(printedMembers.Count, Is.EqualTo(2));
             Assert.That(printedMembers, Has.Member("Age  = '12'"));
             Assert.That(printedMembers, Has.Member("Name = 'Naruto'"));

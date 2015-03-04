@@ -47,37 +47,34 @@ namespace ToText.Core
 
         public static IReadOnlyCollection<string> PrintMemberList(
             IReadOnlyCollection<MemberValueTuple> memberValueTuples,
-            string delimiter)
+            FormatConfiguration format)
         {
             int lengthOfLongestMemberName = memberValueTuples.Select(mv => mv.name.Length).Max();
-            return PrintMemberList(memberValueTuples, lengthOfLongestMemberName, delimiter);
+            return PrintMemberList(memberValueTuples, lengthOfLongestMemberName, format);
         }
 
         public static IReadOnlyCollection<string> PrintMemberList(
             IReadOnlyCollection<MemberValueTuple> memberValueTuples,
             int lengthOfLongestMemberName,
-            string delimiter)
+            FormatConfiguration format)
         {
             if (!memberValueTuples.Any())
                 return new string[0];
             MemberValueTuple memberValueTuple = memberValueTuples.FirstOrDefault();
-            string printedMember = PrintMember(memberValueTuple, lengthOfLongestMemberName, delimiter);
+            string printedMember = PrintMember(memberValueTuple, lengthOfLongestMemberName, format);
             var printedMembers = new List<string> {printedMember};
-            printedMembers.AddRange(PrintMemberList(memberValueTuples.Skip(1).ToList(), lengthOfLongestMemberName, delimiter));
+            printedMembers.AddRange(PrintMemberList(memberValueTuples.Skip(1).ToList(), lengthOfLongestMemberName, format));
             return printedMembers;
         }
 
         private static string PrintMember(MemberValueTuple memberValueTuple, int lengthOfLongestMemberName,
-            string delimiter)
+            FormatConfiguration format)
         {
             int amountOfSpaces = lengthOfLongestMemberName - memberValueTuple.name.Length;
-            return string.Format("{0}{1}{2}{3}{4}{5}",
-                memberValueTuple.name,
-                amountOfSpaces.Spaces(),
-                " = ",
-                delimiter,
-                memberValueTuple.value,
-                delimiter);
+            string valuePrefix = string.Format("{0}{1} = {2}", memberValueTuple.name, amountOfSpaces.Spaces(), format.ValueDelimiter);
+            string memberValueString = memberValueTuple.value.ToNullAwareString(format.NullValueString);
+            string indentedValue = StringFunctions.HangingIndent(memberValueString, valuePrefix.Length);
+            return string.Format("{0}{1}{2}", valuePrefix, indentedValue, format.ValueDelimiter);
         }
 
         public static string PrintHangingIndented(string unindentedPrefix, IReadOnlyCollection<string> lines, FormatConfiguration format)
@@ -120,10 +117,5 @@ namespace ToText.Core
             list.AddRange(restItems);
             return list;
         }
-
-        public static IReadOnlyCollection<T> Rest<T>(this IEnumerable<T> items)
-        {
-            return items.Skip(1).ToList();
-        } 
     }
 }

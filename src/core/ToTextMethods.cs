@@ -27,8 +27,8 @@ namespace ToText
             IReadOnlyCollection<Accessor<T>> accessors = Functions.CreateAccessors(item, members);
             IReadOnlyCollection<MemberValueTuple> memberValueList = accessors.Select(Functions.EvaluateMemberValue).ToList();
             int lengthOfLongestMemberName = memberValueList.Select(mv => mv.name.Length).Max();
-            IReadOnlyCollection<string> memberList = Functions.PrintMemberList(memberValueList, lengthOfLongestMemberName, configuration.ValueDelimiter);
-            return Functions.PrintHangingIndented(printedType.value, memberList, configuration);
+            IReadOnlyCollection<string> memberList = Functions.PrintMemberList(memberValueList, lengthOfLongestMemberName, configuration);
+            return StringFunctions.HangingIndent(printedType.value, string.Join(configuration.NewLineString, memberList), configuration.NewLineString);
             string memberBlock = members.EnBlock(
                 m => item.PrintMember(
                     m,

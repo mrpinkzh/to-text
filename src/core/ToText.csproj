@@ -46,6 +46,8 @@
     <Compile Include="Core\MemberPrint.cs" />
     <Compile Include="Core\PrintedType.cs" />
     <Compile Include="Core\MemberValueTuple.cs" />
+    <Compile Include="Core\StringFunctions.cs" />
+    <Compile Include="Core\SystemFunctions.cs" />
     <Compile Include="Core\ValuePrint.cs" />
     <Compile Include="Format.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

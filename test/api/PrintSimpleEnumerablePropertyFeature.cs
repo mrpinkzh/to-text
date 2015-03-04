@@ -19,7 +19,7 @@ namespace ToText.Api
         public void OnCityWithTwoDojos_ShouldReturnBoth()
         {
             string text = edo.ToText(c => c.Dojos.ToText(d => d.Name));
-            Assert.That(text, Is.EqualTo("City: Dojos = 'Dojo: Name = 'Dojo Tsubasa', Dojo: Name =  null'"));
+            Assert.That(text, Is.EqualTo("City: Dojos = 'Dojo: Name = 'Dojo Tsubasa', Dojo: Name = 'null''"));
         }
     }
 }
