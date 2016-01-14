@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>ToText</id>
+    <version>1.0.9</version>
+    <title>to-text</title>
+    <authors>mrpinkzh</authors>
+    <owners>mrpinkzh</owners>
+    <projectUrl>https://github.com/mrpinkzh/to-text</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>see:
+https://github.com/mrpinkzh/to-text</description>
+    <copyright>Copyright ©  2014</copyright>
+	<tags>
+		Utility
+	</tags>
+  </metadata>
+  <files>
+	<file src="src\core\bin\Release\ToText.dll" target="lib\net45" />
+  </files>
+</package>
