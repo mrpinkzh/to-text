@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using ToText.Configuration;
 
 namespace ToText.Core
@@ -37,7 +38,7 @@ namespace ToText.Core
 
         public static dynamic EvaluateFunctionValue<T>(Accessor<T> accessor)
         {
-            if (!typeof(T).IsValueType)
+            if (!typeof(T).GetTypeInfo().IsValueType)
                 if (Equals(accessor.instance, default(T)))
                     return null;
             if (accessor.func == null)

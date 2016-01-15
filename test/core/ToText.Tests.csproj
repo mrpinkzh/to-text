@@ -65,11 +65,10 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\core\ToText.csproj">
-      <Project>{4319a96a-fc4d-48b3-a961-785250601b19}</Project>
+      <Project>{d202ea09-604a-43ed-bf29-67120f548175}</Project>
       <Name>ToText</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
