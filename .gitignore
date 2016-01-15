@@ -5,3 +5,4 @@ bin
 *.feature.cs
 *.VisualState.xml
 TestResult.xml
+packages
