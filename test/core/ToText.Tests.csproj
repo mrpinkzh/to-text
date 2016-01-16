@@ -1,16 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9BFA6445-2DAC-4062-9C5F-09EF90022086}</ProjectGuid>
+    <ProjectGuid>{7DC5899A-F10D-4E68-B7A1-905EB4F04AD3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ToText</RootNamespace>
     <AssemblyName>ToText.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DefaultLanguage>de-DE</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,46 +34,45 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="BasicPrintTests_Spaces.cs" />
-    <Compile Include="CallMethodExpressionEvaluationTests_IsToText.cs" />
-    <Compile Include="Core\IndentationFunctions_HangingIndent.cs" />
-    <Compile Include="Core\IndentationFunctions_Indent.cs" />
-    <Compile Include="Core\FunctionsTests_Base.cs" />
-    <Compile Include="Core\FunctionsTests_EvaluateMemberValue.cs" />
-    <Compile Include="Core\FunctionsTests_EvaluateFunctionTestsValue.cs" />
-    <Compile Include="Core\FunctionsTests_PrintMemberList.cs" />
-    <Compile Include="Core\FunctionsTests_PrintType.cs" />
-    <Compile Include="Infrastructure\City.cs" />
-    <Compile Include="Infrastructure\Structure.cs" />
-    <Compile Include="MemberExpressionEvaluationTests_Base.cs" />
-    <Compile Include="MemberExpressionEvaluationTests_ExtractMemberExpression.cs" />
-    <Compile Include="MemberExpressionEvaluationTests_ExtractMemberName.cs" />
-    <Compile Include="MemberExpressionEvaluationTests_IsMember.cs" />
-    <Compile Include="Infrastructure\CreateRandom.cs" />
-    <Compile Include="Infrastructure\Dojo.cs" />
-    <Compile Include="Infrastructure\Ninja.cs" />
-    <Compile Include="Infrastructure\Shinobi.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValuePrintTests_ToValueString.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
     <ProjectReference Include="..\..\src\core\ToText.csproj">
       <Project>{d202ea09-604a-43ed-bf29-67120f548175}</Project>
       <Name>ToText</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="BasicPrintTests_Spaces.cs" />
+    <Compile Include="CallMethodExpressionEvaluationTests_IsToText.cs" />
+    <Compile Include="Core\FunctionsTests_Base.cs" />
+    <Compile Include="Core\FunctionsTests_EvaluateFunctionTestsValue.cs" />
+    <Compile Include="Core\FunctionsTests_EvaluateMemberValue.cs" />
+    <Compile Include="Core\FunctionsTests_PrintMemberList.cs" />
+    <Compile Include="Core\FunctionsTests_PrintType.cs" />
+    <Compile Include="Core\IndentationFunctions_HangingIndent.cs" />
+    <Compile Include="Core\IndentationFunctions_Indent.cs" />
+    <Compile Include="Infrastructure\City.cs" />
+    <Compile Include="Infrastructure\CreateRandom.cs" />
+    <Compile Include="Infrastructure\Dojo.cs" />
+    <Compile Include="Infrastructure\Ninja.cs" />
+    <Compile Include="Infrastructure\Shinobi.cs" />
+    <Compile Include="Infrastructure\Structure.cs" />
+    <Compile Include="MemberExpressionEvaluationTests_Base.cs" />
+    <Compile Include="MemberExpressionEvaluationTests_ExtractMemberExpression.cs" />
+    <Compile Include="MemberExpressionEvaluationTests_ExtractMemberName.cs" />
+    <Compile Include="MemberExpressionEvaluationTests_IsMember.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValuePrintTests_ToValueString.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
