@@ -15,7 +15,4 @@ https://github.com/mrpinkzh/to-text</description>
 		Utility net45 win8
 	</tags>
   </metadata>
-  <files>
-	<file src="src\core\bin\Release\ToText.dll" target="lib" />
-  </files>
 </package>
