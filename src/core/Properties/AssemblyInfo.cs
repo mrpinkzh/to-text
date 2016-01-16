@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("ToText.Core")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("see: https://github.com/mrpinkzh/to-text")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Aias Engineering")]
 [assembly: AssemblyProduct("ToText")]
